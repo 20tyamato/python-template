@@ -12,7 +12,7 @@ This repository contains templates for a python project. Copy this repository an
 The package can be installed like this:
 
 ```shell
-git clone git@github.com:mantra-inc/python-template.git
+git clone https://github.com/20tyamato/python-template.git
 cp -r python-template new-project
 cd new-project
 rm -rf .git
