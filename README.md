@@ -60,4 +60,7 @@ pip install colorlog
 pip install pytest
 pip install pre-commit
 pip install ruff
+pip install openai
+pip install torch
+pip install pandas
 ```

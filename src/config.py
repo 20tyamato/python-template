@@ -21,6 +21,7 @@ def init_logging_config():
         logging.config.fileConfig(
             config_path, disable_existing_loggers=False, defaults=defaults
         )
+        logging.getLogger("httpx").setLevel(logging.WARNING)
     except Exception as e:
         logging.basicConfig(level=logging.INFO)
         logging.getLogger(__name__).exception(
