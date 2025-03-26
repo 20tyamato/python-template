@@ -64,3 +64,10 @@ pip install openai
 pip install torch
 pip install pandas
 ```
+
+## How to push to GitHub
+
+```console
+git remote set-url origin "https://$GIT_PERSONAL_TOKEN@github.com/20tyamato/python-template.git"
+git push -u origin main
+```
