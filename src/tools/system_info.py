@@ -3,17 +3,15 @@ import multiprocessing
 
 import torch
 
-from common import logger
+from src.common import logger
 
 
 def print_cpu_info():
-    """Displays the number of CPU cores."""
     cpu_count = multiprocessing.cpu_count()
     logger.info(f"Number of CPU cores: {cpu_count}")
 
 
 def print_gpu_info():
-    """Displays GPU information. Outputs only if CUDA is available."""
     if not torch.cuda.is_available():
         logger.info("CUDA is not available.")
         return
