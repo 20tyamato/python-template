@@ -190,8 +190,35 @@ uv run python src/main.py
 \`\`\`
 uv run pytest
 \`\`\`
+
+## バージョン管理
+
+このプロジェクトは Git を使用してバージョン管理されています。
+リモートリポジトリは GitHub にホストされています。
+
+## 仮想環境管理
+
+このプロジェクトでは **uv** を使用して仮想環境を管理しています。
+
+- [uv](https://uv.dev/) を使用
+  - [便利ページ](https://speakerdeck.com/mickey_kubo/pythonpatukeziguan-li-uv-wan-quan-ru-men)
+  - 便利コマンド
+    - `source .venv/bin/activate` で仮想環境をアクティベート
+    - `deactivate` で仮想環境をディアクティベートできる
+    - `uv add package_name` でパッケージを追加できる
+    - `uv pip check` で依存関係の整合性をチェックできる
+    - `uv remove package_name` でパッケージを削除できる
+    - `uv sync` で依存パッケージを同期できる
+    - `uv tool list` で利用可能なツール一覧を表示
+    - `uv tool install tool_name` でツールをインストール
+
+## linter / formatter
+- [ruff](https://github.com/astral-sh/ruff)を使用
+
 EOF
 
+git commit -m "Update README.md" > /dev/null
+git push -u origin main > /dev/null
 ok "Updated README.md"
 
 # ----------------------------------------
