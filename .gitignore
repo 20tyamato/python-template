@@ -179,6 +179,9 @@ tmp/
 # Heavy Data Files
 data
 
+# uv environment lock file
+uv.lock
+
 # macOS specific files
 .DS_Store
 
