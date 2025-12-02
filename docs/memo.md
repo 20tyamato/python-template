@@ -30,3 +30,27 @@
   - `.pre-commit-config.yaml` に設定を記載
   - セットアップ方法
     - `pre-commit install` を実行
+
+## Lint & Format
+
+This repository uses [Ruff](https://github.com/astral-sh/ruff) to run lint & format codes.
+You can set up pre-commit git hooks by running following commands, then formatter is run automatically before commit.
+
+```console
+pre-commit install
+```
+
+or you can also run manually
+
+```console
+python -m ruff check
+python -m ruff format
+```
+
+## Tests
+
+```console
+export PYTHONPATH=$(pwd)
+pytest -c config/pytest.ini
+pip check
+```
