@@ -11,6 +11,7 @@ git push -u origin main
 echo -e "\033[32m✅ Initialized new Git repository and pushed to remote.\033[0m"
 
 uv init
+rm -rf main.py
 uv venv -p 3.12
 # uv sync
 source .venv/bin/activate
@@ -23,6 +24,9 @@ mkdir -p data
 pre-commit install
 
 # README.mdの編集
+# [tool.ruff]
+# lint.ignore = ["E402", "F405", "F403"]
+
 
 SCRIPT_NAME=$(basename "$0")
 rm -f "$SCRIPT_NAME"
