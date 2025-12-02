@@ -26,6 +26,10 @@
 
 ## linter / formatter
 
+- [ruff](https://github.com/astral-sh/ruff)を使用
+  - `uv tool install ruff` を実行してインストール
+  - `ruff check .` でコードをチェック
+  - `ruff format .` でコードをフォーマット
 - [pre-commit](https://pre-commit.com/) を使用
   - `.pre-commit-config.yaml` に設定を記載
   - セットアップ方法
