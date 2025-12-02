@@ -22,6 +22,8 @@ mkdir -p data
 
 pre-commit install
 
+# README.mdの編集
+
 SCRIPT_NAME=$(basename "$0")
 rm -f "$SCRIPT_NAME"
 echo -e "\033[32m✅ Setup completed and $SCRIPT_NAME removed.\033[0m"
