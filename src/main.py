@@ -1,5 +1,5 @@
 # src/main.py
-from common import logger
+from src.common import logger
 
 
 def main():
