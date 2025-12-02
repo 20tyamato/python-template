@@ -1,7 +1,9 @@
 # src/main.py
-from src.common import logger
+from src.common import logger, measure_time, memory_trace
 
 
+@measure_time
+@memory_trace
 def main():
     logger.info("This is main.py")
 
