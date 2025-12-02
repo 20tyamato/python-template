@@ -182,6 +182,9 @@ data
 # uv environment lock file
 uv.lock
 
+# direnv environment variables file
+.envrc
+
 # macOS specific files
 .DS_Store
 

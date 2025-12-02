@@ -7,17 +7,11 @@ This repository contains templates for a python project. Copy this repository an
 - Python 3.11.5
 - Pip 23.3.1
 
-## pip packages installed
+## How to set up your project
 
 ```console
-pip install python-dotenv
-pip install colorlog
-pip install pytest
-pip install pre-commit
-pip install ruff
-pip install openai
-pip install torch
-pip install pandas
+chmod +x setup.sh
+./setup.sh
 ```
 
 ## How to push to GitHub
