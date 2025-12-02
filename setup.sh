@@ -38,10 +38,26 @@ ok "CPU: ${CPU_BRAND} (physical cores: ${CPU_PHYSICAL}, logical cores: ${CPU_LOG
 ok "Memory: ${MEM_GB} GB"
 ok "GPU cores: ${GPU_CORES}"
 
+# ----------------------------------------
+# Prerequisite Checks
+# ----------------------------------------
+REPO_CHECK_URL="https://api.github.com/repos/20tyamato/${PROJECT_NAME}"
 
-# ----------------------------------------
-# Preconditions
-# ----------------------------------------
+GITHUB_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+    -H "Authorization: token ${GIT_PERSONAL_TOKEN}" \
+    "$REPO_CHECK_URL")
+
+if [[ "$GITHUB_STATUS" == "200" ]]; then
+    ok "GitHub repository exists: 20tyamato/${PROJECT_NAME}"
+elif [[ "$GITHUB_STATUS" == "404" ]]; then
+    err "GitHub repository does NOT exist: 20tyamato/${PROJECT_NAME}"
+    echo "Create it first:"
+    echo "👉 https://github.com/new"
+    exit 1
+else
+    err "Unexpected response from GitHub API (HTTP $GITHUB_STATUS)"
+    exit 1
+fi
 
 # Homebrew チェック
 if ! command -v brew > /dev/null 2>&1; then
@@ -163,57 +179,59 @@ fi
 cat << EOF > README.md
 # ${PROJECT_NAME}
 
-## Python バージョン
-このプロジェクトは **Python 3.11 以上** を推奨します。
-依存関係の管理には **uv** を利用しています。
+## Python Version
+This project recommends **Python 3.11 or higher**.
+Dependency management uses **uv**.
 
-## プロジェクト構成
+## Project Structure
 
 ${PROJECT_NAME}/
-├── src/            # アプリケーションコード
-├── tests/          # テストコード
-├── pyproject.toml  # パッケージ設定
-├── uv.lock         # 依存ロックファイル
+├── src/            # Application code
+├── tests/          # Test code
+├── config/         # Configuration files
+├── .gitignore      # Git ignore rules
+├── pyproject.toml  # Package configuration
+├── uv.lock         # Dependency lock file
 └── README.md
 
-## セットアップ
+## Setup
 \`\`\`
 uv sync
 \`\`\`
 
-## 実行方法
+## How to Run
 \`\`\`
 uv run python src/main.py
 \`\`\`
 
-## テスト
+## Testing
 \`\`\`
 uv run pytest
 \`\`\`
 
-## バージョン管理
+## Version Control
 
-このプロジェクトは Git を使用してバージョン管理されています。
-リモートリポジトリは GitHub にホストされています。
+This project uses Git for version control.
+The remote repository is hosted on GitHub.
 
-## 仮想環境管理
+## Virtual Environment Management
 
-このプロジェクトでは **uv** を使用して仮想環境を管理しています。
+This project uses **uv** to manage virtual environments.
 
-- [uv](https://uv.dev/) を使用
-  - [便利ページ](https://speakerdeck.com/mickey_kubo/pythonpatukeziguan-li-uv-wan-quan-ru-men)
-  - 便利コマンド
-    - `source .venv/bin/activate` で仮想環境をアクティベート
-    - `deactivate` で仮想環境をディアクティベートできる
-    - `uv add package_name` でパッケージを追加できる
-    - `uv pip check` で依存関係の整合性をチェックできる
-    - `uv remove package_name` でパッケージを削除できる
-    - `uv sync` で依存パッケージを同期できる
-    - `uv tool list` で利用可能なツール一覧を表示
-    - `uv tool install tool_name` でツールをインストール
+- Using [uv](https://uv.dev/)
+    - [Useful guide](https://speakerdeck.com/mickey_kubo/pythonpatukeziguan-li-uv-wan-quan-ru-men)
+    - Useful commands:
+        - `source .venv/bin/activate` to activate the virtual environment
+        - `deactivate` to deactivate the virtual environment
+        - `uv add package_name` to add a package
+        - `uv pip check` to check dependency consistency
+        - `uv remove package_name` to remove a package
+        - `uv sync` to synchronize dependencies
+        - `uv tool list` to display available tools
+        - `uv tool install tool_name` to install a tool
 
-## linter / formatter
-- [ruff](https://github.com/astral-sh/ruff)を使用
+## Linter / Formatter
+- Using [ruff](https://github.com/astral-sh/ruff)
 
 EOF
 
