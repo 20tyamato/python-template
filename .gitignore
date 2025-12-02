@@ -177,12 +177,16 @@ cython_debug/
 tmp/
 
 # Heavy Data Files
-*.csv
-memo.md
+data
+
+# uv environment lock file
+uv.lock
+
+# direnv environment variables file
+.envrc
 
 # macOS specific files
 .DS_Store
 
 # Google Cloud Service Account Key
-config/novel-translation-414706-12ad6f412894.json
-
+config/service_account.json
