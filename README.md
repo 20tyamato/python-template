@@ -20,3 +20,11 @@ chmod +x setup.sh
 git remote set-url origin "https://$GIT_PERSONAL_TOKEN@github.com/20tyamato/python-template.git"
 git push -u origin main
 ```
+
+## TODO
+
+- uvを使う
+- uvなどの説明文も含める
+- config.pyをアップデートする
+- python setup.pyを追加うする
+- ディレクトリをもっと綺麗にして、より汎用性を高める
